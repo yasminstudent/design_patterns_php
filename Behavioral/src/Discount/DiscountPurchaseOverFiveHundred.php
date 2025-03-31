@@ -4,7 +4,7 @@ namespace DesignPattern\Behavioral\Discount;
 
 use DesignPattern\Behavioral\Budget;
 
-class DiscountPurchaseOverFiveHundred extends AbstractDiscount implements DiscountInterface
+class DiscountPurchaseOverFiveHundred extends AbstractDiscount
 {
     public function calculateDiscount(Budget $budget): float
     {
@@ -12,8 +12,6 @@ class DiscountPurchaseOverFiveHundred extends AbstractDiscount implements Discou
             return $budget->value * 0.2;
         }
 
-        return !empty($this->nextDiscount) 
-            ? $this->nextDiscount->calculateDiscount($budget) 
-            : 0;
+        return $this->nextDiscount->calculateDiscount($budget);
     }
 }
