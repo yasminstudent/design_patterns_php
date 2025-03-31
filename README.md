@@ -26,6 +26,13 @@ Para saber mais sobre strategy:
 * [refactoring.guru](https://refactoring.guru/design-patterns/strategy)
 * olhar no seu caderno de estudos (capa: Hello my Love)
 
+### Chain of Responsibility
+
+
+
+
 ---
 ## O que aprendemos:
 Como diminuir a complexidade do nosso código, trocando múltiplas condicionais por classes (esta técnica é chamada de [**Strategy**](https://github.com/yasminstudent/design_patterns?tab=readme-ov-file#strategy)).
+
+Sempre que uma nova funcionalidade dever ser implementada, o ideal é que possamos criar código novo e editar o mínimo possível de código já existente. Este é um dos principais pontos do princípio Aberto-Fechado (Open-Closed Principle) do SOLID. Ao editar código existente, podemos acabar quebrando funcionalidades já implementadas e funcionais.
