@@ -28,8 +28,23 @@ Para saber mais sobre strategy:
 
 ### Chain of Responsibility
 
+O padrão **Chain of Responsibility** é um padrão que permite passar uma solicitação por uma cadeia de manipuladores. Cada manipulador decide se processa a solicitação ou a encaminha para o próximo da cadeia. Isso evita estruturas condicionais complexas e torna o código mais flexível.  
 
+#### Exemplo: Calculando Descontos
 
+Neste projeto, o **Chain of Responsibility** foi aplicado para calcular descontos. A lógica funciona criando uma sequência de verificações:  
+
+Se um tipo de desconto não se aplica, o cálculo é passado para o próximo na cadeia. Isso permite adicionar ou modificar regras de desconto sem alterar a estrutura principal do código.
+
+O código segue a seguinte estrutura:
+
+- Uma [**classe abstrata**](https://github.com/yasminstudent/design_patterns_php/blob/main/Behavioral/src/Discount/AbstractDiscount.php) que armazena a referência para o próximo desconto na cadeia.  
+- As [**classes concretas**](http://github.com/yasminstudent/design_patterns_php/tree/main/Behavioral/src/Discount) implementam suas próprias regras de desconto, verificam se a condição se aplica e, caso contrário, repassam a solicitação para o próximo desconto.  
+- Uma [**calculadora de descontos**](https://github.com/yasminstudent/design_patterns_php/blob/main/Behavioral/src/DiscountCalculator.php#L12) que inicializa e executa a cadeia de descontos.  
+
+Para saber mais sobre Chain of Responsibility:
+* [refactoring.guru](https://refactoring.guru/design-patterns/chain-of-responsibility)
+* olhar no seu caderno de estudos (capa: Hello my Love)
 
 ---
 ## O que aprendemos:
