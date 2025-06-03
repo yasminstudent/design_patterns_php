@@ -46,6 +46,50 @@ Para saber mais sobre Chain of Responsibility:
 * [refactoring.guru](https://refactoring.guru/design-patterns/chain-of-responsibility)
 * olhar no seu caderno de estudos (capa: Hello my Love)
 
+### Template Method
+
+O padrão **Template Method** é um padrão de comportamento que define o esqueleto de um algoritmo em uma classe base, permitindo que subclasses implementem etapas específicas sem alterar a estrutura geral do processo. Esse padrão promove reutilização de código, facilita a manutenção e reduz duplicação de lógica.
+
+#### Exemplo: Cálculo de Impostos com Duas Alíquotas
+
+Neste projeto, o padrão **Template Method** foi utilizado para simplificar e reutilizar a lógica de cálculo de impostos que seguem um modelo com duas taxas (mínima e máxima), aplicadas com base em condições específicas.
+
+##### Estrutura Anterior
+
+- [Classe XTLG](https://github.com/yasminstudent/design_patterns_php/blob/main/Behavioral/src/Tax/XTLG.php):
+
+```php
+public function calculateTax(Budget $budget): float
+{
+    if ($budget->value > 500) { // Verificando se deve aplicar a taxa máxima
+        return $budget->value * 0.03; // Calculando a taxa máxima
+    }
+
+    return $budget->value * 0.02; // Calculando a taxa mínima
+}
+```
+
+- [Classe YSL](https://github.com/yasminstudent/design_patterns_php/blob/main/Behavioral/src/Tax/YSL.php)
+
+```php
+public function calculateTax(Budget $budget): float
+{
+    if ($budget->value > 300 && $budget->quantityItems > 3) { // Verificando se deve aplicar a taxa máxima
+        return $budget->value * 0.04; // Calculando a taxa máxima
+    }
+
+    return $budget->value * 0.025; // Calculando a taxa mínima
+}
+```
+
+##### Refatoração com Template Method
+Para evitar duplicação e tornar o código mais flexível, a lógica comum foi extraída para uma [**classe abstrata**](https://github.com/yasminstudent/design_patterns_php/blob/main/Behavioral/src/Tax/TaxWithTwoRates.php), que define o fluxo de cálculo. 
+As classes de imposto agora herdam essa classe base e implementam apenas as regras específicas de cada imposto.
+
+Com isso, mantemos o controle central do algoritmo e delegamos às subclasses apenas a responsabilidade pelas condições e taxas aplicáveis.
+
+antes de avançar mais no curso, sanar dúvidas sobre chain of responsibility e template method (e anotar no caderno) (aplicabilidade, exemplos, outras formas de implementar, ler o site goru etc)
+
 ---
 ## O que aprendemos:
 Como diminuir a complexidade do nosso código, trocando múltiplas condicionais por classes (esta técnica é chamada de [**Strategy**](https://github.com/yasminstudent/design_patterns?tab=readme-ov-file#strategy)).
